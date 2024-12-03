@@ -1,23 +1,23 @@
 from abc import ABC,abstractmethod
 
-class TableActions(ABC):
+class ITableActions(ABC):
 
     @abstractmethod
-    def countRows(self):
+    def count_rows(self):
         pass
 
     @abstractmethod
-    def selectRow(self):
+    def select_row(self,row_num:int):
         pass
 
     @abstractmethod
-    def readTableRow(self):
+    def read_table_row(self,row_num:int):
         pass
 
     @abstractmethod
-    def readColumnData(self):
+    def read_column_data_by_id(self,col_num:int):
         pass
 
     @abstractmethod
-    def readCellData(self):
+    def read_cell_data_by_id(self,row_num:int,col_num:int):
         pass
