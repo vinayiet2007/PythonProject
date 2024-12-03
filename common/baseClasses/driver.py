@@ -7,6 +7,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from webdriver_manager.firefox import GeckoDriverManager
 from common.utilities.logger import Logger
+import urllib3
+urllib3.util.timeout.Timeout(connect=60.0, read=120.0)
 
 class Driver:
 
@@ -18,7 +20,7 @@ class Driver:
             options = ChromeOptions()
             match browser_name:
                 case 'chrome':
-                    options.add_argument("--headless")
+                    # options.add_argument("--headless")
                     options.add_argument("--disable-gpu")
                     service = ChromeService(ChromeDriverManager().install())
                     Driver.driver = webdriver.Chrome(service=service, options=options)
@@ -37,11 +39,14 @@ class Driver:
         except Exception as e:
             Logger.critical(f"No Driver found {e}")
 
-    def navigate_url(self,url):
-        self.driver.get(url)
+    @staticmethod
+    def navigate_url(url):
+        Driver.driver.get(url)
 
-    def driver_close(self):
-        self.driver.close()
+    @staticmethod
+    def driver_close():
+        Driver.driver.close()
 
-    def driver_quit(self):
-        self.driver.quit()
+    @staticmethod
+    def driver_quit():
+        Driver.driver.quit()

@@ -1,11 +1,20 @@
 import logging
 from logging.handlers import RotatingFileHandler
 from common.interfaces.iLogger import ILogger
+import os
+from pathlib import Path
 
 class Logger(ILogger):
+
+    project_root = Path(__file__).resolve().parent
+    while project_root != project_root.root and not (project_root / ".git").exists():
+        project_root = project_root.parent
+    log_folder = os.path.join(project_root, "logs")
+    os.makedirs(log_folder, exist_ok=True)
+    log_file_path = os.path.join(log_folder, "project.log")
     logger = logging.getLogger("StaticLogger")
     logger.setLevel(logging.DEBUG)
-    file_handler = RotatingFileHandler("../../logs/project.log", maxBytes=20000, backupCount=5)
+    file_handler = RotatingFileHandler(log_file_path, maxBytes=20000, backupCount=5)
     console_handler = logging.StreamHandler()
     formatter = logging.Formatter('%(asctime)s - %(filename)s:%(lineno)d - %(funcName)s - %(levelname)s - %(message)s')
 
@@ -14,6 +23,8 @@ class Logger(ILogger):
 
     logger.addHandler(file_handler)
     logger.addHandler(console_handler)
+
+
 
     @staticmethod
     def info(log_message:str):
