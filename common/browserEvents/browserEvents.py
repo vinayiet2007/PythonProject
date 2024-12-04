@@ -13,7 +13,7 @@ class BrowserEvents(IBrowserEvents):
 
     def set_text(self,element:WebElement,text:str):
         element.send_keys(text)
-        Logger.info(f"Successfully Type value {text}")
+        Logger.info(f"Successfully Type value '{text}'")
 
     def get_text(self,element:WebElement):
         fetched_value = element.text
@@ -26,10 +26,10 @@ class BrowserEvents(IBrowserEvents):
 
     def get_attribute(self, element: WebElement,attribute:str):
         attribute_value = element.value_of_css_property(attribute)
-        Logger.info(f"Successfully fetched attribute: {attribute} value: {attribute_value}")
+        Logger.info(f"Successfully fetched attribute: '{attribute}' value: '{attribute_value}'")
         return attribute_value
 
     def select_option(self, element: WebElement,option:str):
         select = Select(element)
         select.select_by_value(option)
-        Logger.info(f"Successfully selected option: {option}")
+        Logger.info(f"Successfully selected option: '{option}'")

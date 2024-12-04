@@ -1,4 +1,5 @@
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.webkitgtk.webdriver import WebDriver
 
 from common.baseClasses.driver import Driver
 from common.interfaces.iElements import IElements
@@ -9,7 +10,7 @@ from common.utilities.logger import Logger
 
 class Elements(IElements):
 
-    def __init__(self,driver):
+    def __init__(self,driver:WebDriver):
         self.driver = driver
 
     def get_element(self, locator_object):
@@ -31,6 +32,30 @@ class Elements(IElements):
                     return "no Element found"
             Logger.info(f"Element found with Locator type and value: {locator_type} - {locator_value}")
             return element
+        except NoSuchElementException:
+            Logger.critical(f"No Element found : {NoSuchElementException}")
+        except TimeoutException:
+            Logger.critical(f"No Element found in given time: {TimeoutException}")
+
+    def get_elements(self, locator_object):
+        try:
+            elements:[WebElement]
+            resource_manager = ResourceManager()
+            resource_object = resource_manager.fetchElement(locator_object)
+            locator_type = resource_object[0]
+            locator_value = resource_object[1]
+            Logger.info(f"Searching for Locator with type and value: {locator_type} - {locator_value}")
+            match locator_type:
+                case 'xpath':
+                    elements = self.driver.find_elements(By.XPATH, locator_value)
+                case 'css':
+                    elements = self.driver.find_elements(By.CSS_SELECTOR, locator_value)
+                case 'id':
+                    elements = self.driver.find_elements(By.ID, locator_value)
+                case _:
+                    return "no Element found"
+            Logger.info(f"Element found with Locator type and value: {locator_type} - {locator_value}")
+            return elements
         except NoSuchElementException:
             Logger.critical(f"No Element found : {NoSuchElementException}")
         except TimeoutException:

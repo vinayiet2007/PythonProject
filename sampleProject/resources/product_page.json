@@ -1,0 +1,14 @@
+{
+  "products_title":{
+      "locator_type" : "xpath",
+      "locator_value" : "//div[@data-test='inventory-item-name']"
+    },
+  "sort_product_select":{
+      "locator_type" : "xpath",
+      "locator_value" : "//select[@data-test='product-sort-container']"
+    },
+  "login_button":{
+      "locator_type" : "xpath",
+      "locator_value" : "//input[@id='login-button']"
+    }
+}

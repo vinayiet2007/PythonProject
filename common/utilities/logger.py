@@ -5,7 +5,6 @@ import os
 from pathlib import Path
 
 class Logger(ILogger):
-
     project_root = Path(__file__).resolve().parent
     while project_root != project_root.root and not (project_root / ".git").exists():
         project_root = project_root.parent

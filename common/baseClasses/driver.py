@@ -7,8 +7,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from webdriver_manager.firefox import GeckoDriverManager
 from common.utilities.logger import Logger
-import urllib3
-urllib3.util.timeout.Timeout(connect=60.0, read=120.0)
+# import urllib3
+# urllib3.util.timeout.Timeout(connect=60.0, read=120.0)
 
 class Driver:
 
@@ -45,8 +45,10 @@ class Driver:
 
     @staticmethod
     def driver_close():
+        Logger.info(f"Driver is closed")
         Driver.driver.close()
 
     @staticmethod
     def driver_quit():
+        Logger.info(f"Driver is quit")
         Driver.driver.quit()

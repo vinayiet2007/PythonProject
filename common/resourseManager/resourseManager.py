@@ -10,10 +10,7 @@ class ResourceManager(IResourceManager):
             print(f"Wrong Format Json")
 
 if __name__=='__main__':
-    test = {
-        "locator_type": "xpath",
-        "locator_value": "//test"
-    }
+    test = {'locator_type': 'xpath', 'locator_value': "//[text()='username']"}
 
     rm = ResourceManager()
     print(rm.fetchElement(test))
