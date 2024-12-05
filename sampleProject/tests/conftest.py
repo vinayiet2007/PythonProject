@@ -1,5 +1,5 @@
 import pytest
-from common.ui.baseClasses.driver import Driver
+from common.ui.base_classes.driver import Driver
 from sampleProject.pages.login_page import LoginPage
 
 
