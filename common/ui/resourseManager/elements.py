@@ -1,11 +1,10 @@
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.webkitgtk.webdriver import WebDriver
-
-from common.baseClasses.driver import Driver
-from common.interfaces.iElements import IElements
+from common.ui.baseClasses.driver import Driver
+from common.ui.interfaces.iElements import IElements
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException,TimeoutException
-from common.resourseManager.resourseManager import ResourceManager
+from common.ui.resourseManager.resourseManager import ResourceManager
 from common.utilities.logger import Logger
 
 class Elements(IElements):

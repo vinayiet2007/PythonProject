@@ -1,5 +1,5 @@
-from common.browserEvents.browserEvents import BrowserEvents
-from common.resourseManager.elements import Elements
+from common.ui.browserEvents.browserEvents import BrowserEvents
+from common.ui.resourseManager.elements import Elements
 from sampleProject.pages.common_functions.fetch_element import FetchElement
 
 

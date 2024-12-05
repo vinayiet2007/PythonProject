@@ -1,19 +1,19 @@
 import pytest
-from common.baseClasses.driver import Driver
-import time
-
+from common.ui.baseClasses.driver import Driver
 from sampleProject.pages.login_page import LoginPage
 
 
-@pytest.hookimpl(hookwrapper=True)
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item, call):
     outcome = yield
     report = outcome.get_result()
-
     test_fn = item.obj
     docstring = getattr(test_fn, '__doc__')
     if docstring:
-        report.nodeid = docstring
+        formatted_docstring = docstring.format(**item.funcargs)
+        report.nodeid = formatted_docstring
+    else:
+        report.nodeid = f"Running test with arguments: {item.funcargs}"
 
 @pytest.fixture
 def setup_driver():

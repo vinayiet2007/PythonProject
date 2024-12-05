@@ -1,5 +1,4 @@
-from common.interfaces.iWait import IWait
-from selenium.webdriver.remote.webelement import WebElement
+from common.ui.interfaces.iWait import IWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 

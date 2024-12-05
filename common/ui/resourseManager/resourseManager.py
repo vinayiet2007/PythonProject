@@ -1,5 +1,4 @@
-import json
-from common.interfaces.iResourceManager import IResourceManager
+from common.ui.interfaces.iResourceManager import IResourceManager
 
 class ResourceManager(IResourceManager):
 

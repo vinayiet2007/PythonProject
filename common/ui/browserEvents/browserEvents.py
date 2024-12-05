@@ -3,7 +3,7 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.remote.webelement import WebElement
 from common.utilities.logger import Logger
 
-from common.interfaces.iBrowserEvents import IBrowserEvents
+from common.ui.interfaces.iBrowserEvents import IBrowserEvents
 
 class BrowserEvents(IBrowserEvents):
     driver: webdriver

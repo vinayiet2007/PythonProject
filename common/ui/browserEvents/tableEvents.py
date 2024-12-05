@@ -1,6 +1,6 @@
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
-from common.interfaces.iTableActions import ITableActions
+from common.ui.interfaces.iTableActions import ITableActions
 from common.utilities.logger import Logger
 
 class TableActions(ITableActions):

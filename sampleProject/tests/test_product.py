@@ -26,7 +26,7 @@ def test_product_titles(login):
 @pytest.mark.parametrize("option_list",["az","za"])
 def test_product_titles(login,option_list):
     """
-    Verify products are sorted
+    Verify products are sorted {option_list}
     """
     driver = login
     product_page = ProductPage(driver,"product_page")

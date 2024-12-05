@@ -1,6 +1,6 @@
 import logging
 from logging.handlers import RotatingFileHandler
-from common.interfaces.iLogger import ILogger
+from common.ui.interfaces.iLogger import ILogger
 import os
 from pathlib import Path
 
@@ -23,8 +23,6 @@ class Logger(ILogger):
     logger.addHandler(file_handler)
     logger.addHandler(console_handler)
 
-
-
     @staticmethod
     def info(log_message:str):
         Logger.logger.info(log_message, stacklevel=2)
@@ -41,7 +39,7 @@ class Logger(ILogger):
     def critical(log_message:str):
         Logger.logger.critical(log_message, stacklevel=3)
 
-
+#########################################################
 if __name__=='__main__':
     Logger.info("Button Clicked")
     Logger.warn("Button Not found")
