@@ -1,6 +1,6 @@
 import time
 import pytest
-from sampleProject.pages.login_page import LoginPage
+from sampleProject.ui.pages.login_page import LoginPage
 
 
 @pytest.mark.description("****Test Case 1******")

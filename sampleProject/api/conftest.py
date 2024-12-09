@@ -1,6 +1,8 @@
 import pytest
+
+from common.api.api_client.api_client import APIClient
 from common.ui.base_classes.driver import Driver
-from sampleProject.pages.login_page import LoginPage
+from sampleProject.ui.pages.login_page import LoginPage
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
@@ -16,18 +18,7 @@ def pytest_runtest_makereport(item, call):
         report.nodeid = f"Running test with arguments: {item.funcargs}"
 
 @pytest.fixture
-def setup_driver():
-    driver = Driver.driver_setup('chrome')
-    Driver.navigate_url('https://www.saucedemo.com/')
-    yield driver
-    Driver.driver_close()
-
-@pytest.fixture
-def login(setup_driver):
-    driver = setup_driver
-    login_page = LoginPage(driver,"login_page")
-    login_page.enter_user_name("standard_user")
-    login_page.enter_password("secret_sauce")
-    login_page.login()
-    yield driver
+def set_api_client():
+    api_client=APIClient("https://api.agify.io")
+    yield api_client
 

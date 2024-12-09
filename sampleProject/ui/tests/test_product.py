@@ -1,6 +1,6 @@
 import pytest
 from common.utilities.logger import Logger
-from sampleProject.pages.product_page import ProductPage
+from sampleProject.ui.pages.product_page import ProductPage
 
 
 def test_products(login):

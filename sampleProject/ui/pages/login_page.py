@@ -1,6 +1,6 @@
 from common.ui.browser_events.browser_events import BrowserEvents
 from common.ui.resource_manager.elements import Elements
-from sampleProject.pages.common_functions.fetch_element import FetchElement
+from sampleProject.ui.pages.common_functions.fetch_element import FetchElement
 
 
 class LoginPage:
